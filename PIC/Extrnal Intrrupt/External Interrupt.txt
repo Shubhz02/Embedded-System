@@ -1,0 +1,99 @@
+*Steps for Programming*
+
+Initialization
+
+Set PORTB External interrupt pin as an input.
+Also, make PORTB pins as digital input as it is multiplexed with ADC channels. This is done by disabling the ADON bit in the ADCON1 register or by making the PBADEN configuration a bit low.
+Configure INTCON2 register for edge trigger i.e. positive or negative edge.
+Enable external interrupt (INT0, INT1, INT2) by setting a respective interrupt to enable bit in the INTCON register.
+Enable Global Interrupt (GIE).
+
+void External_Interrupt_Init()
+{
+    TRISBbits.TRISB0=1;		/* Make INT0 pin as an input pin*/
+    
+    /* Also make PBADEN off in Configuration file or clear ADON 
+    in ADCON0 so as to set analog pin as digital*/
+
+    INTCON2=0x00;		/* Set Interrupt detection on falling Edge*/
+    INTCONbits.INT0IF=0;	/* Clear INT0IF flag*/
+    INTCONbits.INT0IE=1;	/* Enable INT0 external interrupt*/
+    INTCONbits.GIE=1;		/* Enable Global Interrupt*/
+}
+
+When an interrupt occurs, it will jump to the ISR to serve to interrupt.
+Finally, clear the Interrupt flag and continue.
+ 
+
+Application
+We are going to develop a small application on PIC18F4550 using an external interrupt. 
+In this, we will toggle LED which is connected to the PORTC.0 pin when an external interrupt occurs.
+
+ 
+
+LED Toggling using PIC18F4550 External Interrupt
+Here, the external interrupt event is coming from the switch connected to pin PORTB.0 (INT0). 
+This event is a negative edge triggered. When the switch is pressed, a low pulse is generated on the INT0 pin. 
+This will generate an interrupt as the INTCON2 register is configured to detect a negative edge trigger (high to low pulse).
+Then the control will move to the ISR in which the LED on PORTC.0 will toggle and the control will move to the main program.
+So there is no need to poll the PORTB.0 pin continuously.
+
+
+
+
+//CODE//
+
+/*
+*Toggle LED using External Interrupt
+*www.electronicwings.com
+*/
+#include "osc.h"
+#include <p18f4550.h>
+
+#define LED LATC
+
+void External_Interrupt_Init();
+void MSdelay(unsigned int);
+
+void main()
+{
+    OSCCON=0x72;		/* Set internal oscillator to 8MHz*/
+    TRISC0=0;			/* Make PORTC.0 as output*/
+    LED=0;            
+    External_Interrupt_Init();	/* Initialize External Interrupt*/   
+    while(1);
+}
+
+void External_Interrupt_Init()
+{
+    TRISBbits.TRISB0=1;		/* Make INT0 pin as an input pin*/
+
+    /* Also make PBADEN off in Configuration file or
+    clear ADON in ADCON0 so as to set analog pin as digital*/
+  
+    INTCON2=0x00;		/* Set Interrupt on falling Edge*/
+    INTCONbits.INT0IF=0;	/* Clear INT0IF flag*/
+    INTCONbits.INT0IE=1;	/* Enable INT0 external interrupt*/
+    INTCONbits.GIE=1;		/* Enable Global Interrupt*/
+}
+
+
+void interrupt ISR()
+{   
+    LED = ~(LED);		/* Toggle LED on interrupt*/
+    MSdelay(200);
+    INTCONbits.INT0IF=0;
+}
+
+void MSdelay(unsigned int val)
+{
+ unsigned int i,j;
+ for (i=0; i<val; i++)
+     for (j=0; j<165; j++);	/* Delay count for 1ms for 8MHz freq. */
+}
+
+
+
+https://youtu.be/ClEwjpGunSs    ///link
+
+
