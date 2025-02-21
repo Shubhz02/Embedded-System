@@ -1,0 +1,20 @@
+PIC18F4550 External Interrupt
+
+
+Introduction
+-Interrupts are the signals which alter the flow of an executing program by causing the microcontroller jumps to the Interrupt Service Routine to serve to interrupt. 
+-These interrupts are given to the microcontroller unit through the external pins of the microcontroller.
+-Once the controller completes the routine, it returns to the location from where it had made a jump.
+-In cases where interrupts are not used, the program would need to constantly poll the input signals to monitor external events for catching the pulses when they occurred.
+-But in some cases, the program can miss an event.  
+-E.g. An infrared slot sensor trying to catch a coin drop. 
+-In this situation, using an interrupt can free the microcontroller to get some other work done while not missing the input. In such cases, external interrupts are used.
+
+
+*External Interrupt Pins*
+PIC18F4550 has three external hardware interrupts - INT0, INT1, and INT2. They are on PORTB pins RB0, RB1, and RB2
+These interrupts are edge-triggered interrupts i.e. triggered by either a rising edge or by a falling edge.
+
+The edge trigger bit is present in an INTCON2 register.
+*INTCON2 Register*
+                  INTCON2: Interrupt Control Register
