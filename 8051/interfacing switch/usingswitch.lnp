@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"usingswitch.obj" 
+TO "usingswitch" 
+RAMSIZE(256) 
