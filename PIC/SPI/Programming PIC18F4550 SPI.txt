@@ -1,0 +1,100 @@
+*Programming PIC18F4550 SPI*
+
+
+Initialization:
+
+Configure PORT pins used for SPI communication.
+
+Also, disable SS pin i.e. SS=1.
+
+Clear SSPIF.
+
+Configure SSPSTAT register by setting bit SMP, CKE for data change at rising/falling edge of the clock, and make Buffer full (BF) = 0.
+
+Initialize SSPCON register by setting bit SPEN =1 for SSP Enable. CKP indicates clock polarity.
+
+Select mode of SPI master/slave mode and decide speed as you require using SSPM3: SSPM0 in SSPCON1 register.
+
+Also de-multiplex all four pins SS, SDO, SDI, and SCK by using different registers i.e. ADCON0, ADCON1.
+
+
+
+*SPI_Master*
+
+void SPI_Init_Master()
+{
+    /* PORT definition for SPI pins*/    
+    TRISBbits.TRISB0 =1;	/* RB0 as input(SDI) */
+    TRISBbits.TRISB1=0;		/* RB1 as output(SCK) */
+    TRISAbits.TRISA5=0;		/* RA5 as a output(SS') */
+    TRISCbits.TRISC7=0;		/* RC7 as output(SDO) */
+
+    /* To initialize SPI Communication configure following Register*/
+    CS = 1;
+    SSPSTAT=0x40;		/* Data change on rising edge of clk , BF=0*/
+    SSPCON1=0x22;		/* Master mode,Serial enable,
+				idle state low for clk, fosc/64 */ 
+    PIR1bits.SSPIF=0;
+
+    /* Disable the ADC channel which are on for multiplexed pin when
+    used as an input */    
+    ADCON0=0;			/* This is for de-multiplexed the 
+				SCL and SDI from analog pins*/
+    ADCON1=0x0F;		/* This makes all pins as digital I/O */
+}
+ 
+
+*SPI_Slave*
+
+void SPI_Init_Slave()
+{
+    /* PORT definition for SPI pins*/    
+    TRISBbits.TRISB0 = 1;	/* RB0 as input(SDI) */
+    TRISBbits.TRISB1 = 1;	/* RB1 as output(SCK) */
+    TRISAbits.TRISA5 = 1;	/* RA5 as a output(SS') */
+    TRISCbits.TRISC7 = 0;	/* RC7 as output(SDO) */
+
+    /* To initialize SPI Communication configure following Register*/
+    CS = 1;
+    SSPSTAT=0x40;		/* Data change on rising edge of clk , BF=0*/
+    SSPCON1=0x24;		/* Slave mode,Serial enable, idle state 
+				high for clk */ 
+    PIR1bits.SSPIF=0;
+
+    /* Disable the ADC channel which are on for multiplexed pin 
+    when used as an input */    
+    ADCON0=0;			/* This is for de-multiplexed the SCL
+				and SDI from analog pins*/
+    ADCON1=0x0F;		/* This makes all pins as digital I/O */    
+}
+ 
+
+*Transmit Mode*
+
+Copy data to the SSPBUF register.
+Wait for the SSPIF interrupt flag to set which is set after complete 1-byte transmission.
+Clear SSPIF
+Read the SSPBUF register immediately to flush data.
+Before transmission/writing of no. of bytes make SS active i.e. SS=0 and after complete transmission/writing disable it, SS=1.
+void SPI_Write(unsigned char x)
+{
+    unsigned char data_flush;
+    SSPBUF=x;			/* Copy data in SSBUF to transmit */
+    while(!PIR1bits.SSPIF);	/* Wait for complete 1 byte transmission */
+    PIR1bits.SSPIF=0;		/* Clear SSPIF flag */
+    data_flush=SSPBUF;		/* Flush the data */
+}
+ 
+
+*Receive mode*
+
+Transmit flush byte by copying data to the SSPBUF register (optional).
+Wait for the SSPIF interrupt flag to set which is set after complete 1-byte is received.
+Read data from SSPBUF register and return SSPBUF.
+unsigned char SPI_Read()
+{    
+    SSPBUF=0xff;		/* Copy flush byte in SSBUF */
+    while(!PIR1bits.SSPIF);	/* Wait for complete 1 byte transmission */
+    PIR1bits.SSPIF=0;
+    return(SSPBUF);		/* Return received byte */   
+}
