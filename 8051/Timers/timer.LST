@@ -1,0 +1,87 @@
+C51 COMPILER V9.50a   TIMER                                                                10/19/2022 19:16:44 PAGE 1   
+
+
+C51 COMPILER V9.50a, COMPILATION OF MODULE TIMER
+OBJECT MODULE PLACED IN timer.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE timer.c BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          
+   3          sbit led1= P0^1;
+   4          sbit led2= P0^2;
+   5          //void delay(void);
+   6          void delay(int);
+   7          void main()
+   8          {
+   9   1      led1=1;
+  10   1      led2=1;
+  11   1      while(1)
+  12   1      {
+  13   2      led1=1;
+  14   2        led2=0;
+  15   2        //delay();
+  16   2        delay(1000);
+  17   2        
+  18   2      led1=0;
+  19   2        led2=1;
+  20   2        //delay();
+  21   2        delay(10);
+  22   2      }
+  23   1      }
+  24            //void delay(void)  ///// .........................................50 MSEC
+  25            //{
+  26            // TMOD=0X01;   
+  27          //  TH0=0X4B;
+  28            //TL0=0XFD;
+  29            //TR0=1;   //RUN  START
+  30            //  while (TF0==0);  //NOT OVERFLOW
+  31            // TR0=0;   // STOP
+  32            //TF0=0;  //NOT OVERFLOW FOR NEXT DELAY
+  33          //}
+  34          
+  35            ///void delay(void)   /// ..........................................1 sec
+  36           //{
+  37           //int i;
+  38          //for(i=0;i<1000;i++)
+  39          //{TMOD=0X01;
+  40          //TH0=0XFC;
+  41          //TL0=0X66;
+  42          //TR0=1;
+  43          //while(TF0==0);
+  44          //TR0=0;
+  45          //TF0=0;
+  46           //}}
+  47           
+  48           
+  49           void delay(int t)
+  50           {
+  51   1      int i;
+  52   1      for(i=0;i<t;i++)
+  53   1         {
+  54   2      TMOD=0X01;
+  55   2      TH0=0XFC;
+C51 COMPILER V9.50a   TIMER                                                                10/19/2022 19:16:44 PAGE 2   
+
+  56   2      TL0=0X66;
+  57   2      TR0=1;
+  58   2      while(TF0==0);
+  59   2      TR0=0;
+  60   2      TF0=0;
+  61   2      }
+  62   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     70    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
