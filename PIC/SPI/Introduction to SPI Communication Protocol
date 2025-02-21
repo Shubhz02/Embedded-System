@@ -1,0 +1,30 @@
+Introduction to SPI Communication Protocol
+
+Serial Peripheral Interface (SPI) is a synchronous serial data protocol generally used for quick communication over short distances.
+
+-SPI is a synchronous protocol that allows a master device (usually microcontroller) to initiate communication with a slave device.
+-It is a full-duplex communication protocol.
+-SPI uses separate clock and data lines with a select line to select the device with which we want to communicate.
+-SPI generally used to communicate quickly with devices like SD card, EEPROM chips, some of the TI ADCs, etc.
+-It can communicate with multiple slaves.
+
+*There are four basic pins used in PIC18F4550 SPI communication which are:
+
+1. SCK: (Serial Clock)-
+The clock signal (SCK) is provided by the master to provide synchronization.
+Only the master device can control the clock line, SCK.
+
+2. SDI: (Serial Data In)
+SDI is the serial data input which carries data into the device.
+
+3. SDO: (Serial Data Out)          
+This is the Serial data output signal. It carries data out of the device.
+
+4. SS: (Slave Select)           
+It is a slave select signal. In master mode, we can use it to choose the device (slave) with which we wish to communicate.
+This is an active low signal, so a low on this line will indicate the SPI is active.
+When multiple slaves are used then GPIO pins of the microcontroller are used to select slave devices.
+
+*SPI Registers for PIC18F4550 *
+A) SSPSTAT: SSP Status Register for SPI mode
+B) SSPCON1: SSP Control Register for SPI mode
