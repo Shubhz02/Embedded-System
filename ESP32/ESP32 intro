@@ -1,0 +1,49 @@
+Introduction to ESP32
+
+
+ESP32 comes with an on-chip 32-bit microcontroller with integrated Wi-Fi + Bluetooth + BLE features that targets a wide range of applications. 
+It is a series of low-power and low-cost developed by Espressif Systems.
+
+*Features of ESP-Wroom-32*
+ESP-Wroom-32 contains a low-power Tensilica Xtensa® Dual-Core 32-bit LX6 microprocessor at 240 MHz: 994.26 CoreMark; 4.14 CoreMark/MHz
+448 KB of ROM for booting and core functions.
+520 KB of on-chip SRAM for data and instructions.
+4MB of Flash Memory
+16 KB SRAM in RTC
+Wi-Fi 802.11b/g/n
+Bluetooth v4.2 BR/EDR and Bluetooth LE specifications
+
+*Advanced Peripheral Interfaces*
+1) GPIO: Total 32 Multifunctional GPIOs are available on the ESP-Wroom-32 development board which can be used for input/output devices. 
+Every GPIO pin can be configured as an internal pull-up, pull-down, or set to high impedance. 
+The input can also be set to edge-trigger or level-trigger to generate CPU interrupts.
+---Note: GPIO34, GPIO35, GPIO36, and GPIO39 are the only input pins
+
+2) ADC: On-chip 12-bit SAR (Successive Approximation Registers) ADCs (Analog to Digital Converter) which supports measurements on 16 channels of ESP32.
+
+3) DAC: On-chip two 8-bit DAC (Digital to Analog) channels to produce digital signals into analog voltage signal outputs. 
+Both DAC channels can also support independent conversions.
+
+4) PWM: ESP32 development board has support 8-bit 32 channels PWM. The pins with the symbol ‘~’ represent that it has PWM support. 
+It can be used for dimming LEDs or controlling motors etc.
+
+5) TOUCH Pad: ESP32 has 10 capacitive sensing GPIOs, that detect physical touch by the human body. 
+This technique can replace mechanical buttons and switches to eliminate mechanical wear and tear. 
+
+6) I2C: The ESP32 development board has only one I2C bus interface (Supported in Arduino IDE). which can serve as an I2C master or slave, 
+depending on the user’s configuration.
+The I2C interfaces support:
+Standard mode Support (100 Kbit/s)
+Fast mode Support (400 Kbit/s)
+Support both 7-bit and 10-bit addressing modes
+Dual addressing mode
+
+
+7) SPI: ESP32 has three SPIs which are SPI, HSPI, and VSPI. These SPIs also support the following general-purpose SPI features:
+Four modes of SPI transfer format (depend on the polarity and the phase of the SPI clock)
+Speed Up to 80 MHz 
+up to 64-byte FIFO
+
+8)UART: ESP32 development board has two UART interfaces UART0 and UART1. Both provide asynchronous communication and support to RS232, RS485, and IrDA too.
+
+
