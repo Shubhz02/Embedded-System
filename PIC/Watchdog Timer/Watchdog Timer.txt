@@ -1,0 +1,122 @@
+*Program*
+
+There are two ways for using Watchdog Timer in PIC18F4550. Here, we blink LEDs continuously and they stuck in between.
+Then WDT resets the PIC18F4550 microcontroller after a specific timeout period which starts blinking of LED again.
+ When WDT reset occurs it displayed on LCD16x2.
+
+
+Note: TO’ bit in RCON register gives the status of WDT time-out occurrence.
+
+Configuration Register Controlled WDT
+
+/*
+   Watchdog Timer in PIC18F4550
+   http://www.electronicwings.com
+ */
+
+
+#include "Configuration_Header_File.h"
+#include "LCD_16x2_8-bit_Header_File.h"
+#include <pic18f4550.h>
+
+#pragma config WDT = ON         /* Watchdog Timer Enable bit (WDT enabled)*/
+#pragma config WDTPS = 256      /* Watchdog Timer Postscale Select bits */
+
+
+void Dummy_Stuck();
+
+#define LED LATB
+#define PORT_Direction TRISB
+
+void main(void) 
+{
+    int count;
+    PORT_Direction = 0;         /* set port as output port */
+    OSCCON = 0x72;              /* use internal oscillator frequency, 8 MHz*/
+    LCD_Init();
+    if(!RCONbits.TO)            /* check for WDT reset occurense */
+        LCD_String_xy(1,0,"WDT Reset");
+    MSdelay(1000);
+    LCD_Clear();
+    count = 0;
+    LED = 0;
+    while(1)
+    {
+        LED = ~LED;             /* Toggle LED */
+        MSdelay(100);              
+        CLRWDT();               /* Clear Watchdog Timer */
+        count++;
+        if(count>20)
+            Dummy_Stuck();      /* Dummy Stuck loop function */
+    }
+}
+
+
+
+void Dummy_Stuck()
+{
+    while(1);                   /* wait till watchdog timeout and then reset system */
+}
+
+
+
+
+
+
+
+
+
+Software Controlled WDT​​​​
+
+/*
+   Watchdog Timer in PIC18F4550
+   http://www.electronicwings.com
+ */
+
+
+#include "Configuration_Header_File.h"
+#include "LCD_16x2_8-bit_Header_File.h"
+#include <pic18f4550.h>
+
+#pragma config WDT = OFF         /* Watchdog Timer Enable bit (WDT disabled (control is placed on the SWDTEN bit))*/
+#pragma config WDTPS = 512       /* Watchdog Timer Postscale Select bits */
+
+
+void Dummy_Stuck();
+
+#define LED LATB
+#define PORT_Direction TRISB
+
+void main(void) 
+{
+    int count;
+    PORT_Direction = 0;         /* set port as output port */
+    OSCCON = 0x72;              /* use internal oscillator frequency, 8 MHz*/
+    LCD_Init();
+    WDTCONbits.SWDTEN = 1;      /* enable software controlled watchdog timer*/
+    if(!RCONbits.TO)            /* check for WDT reset occurrence */
+        LCD_String_xy(1,0,"WDT Reset");
+    MSdelay(1000);
+    LCD_Clear();
+    count = 0;
+    LED = 0;
+    while(1)
+    {
+        LED = ~LED;             /* Toggle LED */
+        MSdelay(100);              
+        CLRWDT();               /* Clear Watchdog Timer */
+        count++;
+        if(count>20)
+            Dummy_Stuck();      /* Dummy Stuck loop function */
+    }
+}
+
+void Dummy_Stuck()
+{
+    while(1);                   /* wait till watchdog timeout and then reset system */
+}
+
+
+
+
+https://youtu.be/GbfQBsdeLw8  ///link
