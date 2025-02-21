@@ -1,0 +1,103 @@
+C51 COMPILER V9.50a   LCDSTRING                                                            10/17/2022 18:56:49 PAGE 1   
+
+
+C51 COMPILER V9.50a, COMPILATION OF MODULE LCDSTRING
+OBJECT MODULE PLACED IN lcdstring.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE lcdstring.c BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          void delay(void);
+   3          void lcd_cmd(unsigned char);
+   4          void lcd_data(unsigned char);
+   5          void lcd_string(unsigned char *P);
+   6          
+   7          #define dataport P2
+   8          sbit rs=P1^1;
+   9          sbit rw=P1^2;
+  10          sbit en=P1^3;
+  11          
+  12          void main ()
+  13          {
+  14   1      lcd_cmd(0x38); //data 
+  15   1      lcd_cmd(0x0C);  //curser off
+  16   1                                       //lcd_cmd(0x0E);  //curser on
+  17   1                                      // lcd_cmd(0x0F);  // curser blinking 
+  18   1        
+  19   1                                      //lcd_cmd(0x08);  //display off (clearing display whitout clear ddram conte
+             -nt)
+  20   1      lcd_cmd(0x01);  //clear 
+  21   1        
+  22   1        
+  23   1      lcd_cmd(0x80); //line 1st
+  24   1                                     //lcd_cmd(0x86);  //1st line 6 postion
+  25   1      lcd_string("Shubham"); //data
+  26   1      
+  27   1      lcd_cmd(0xC0); //line 2nd
+  28   1                                     //lcd_cmd(0xC6); //2nd line 6 postion
+  29   1      lcd_string("Shastri"); //data
+  30   1        
+  31   1                                    //while (1);   //stop
+  32   1      while(1) //active
+  33   1        
+  34   1        lcd_cmd(0x1C); //right shift
+  35   1                                     //lcd_cmd(0x18);   //right shift
+  36   1      
+  37   1      }
+  38          
+  39          void lcd_cmd(unsigned char c)
+  40          {
+  41   1      dataport=c;
+  42   1      rs=0;
+  43   1      rw=0;
+  44   1      en=1;
+  45   1      delay();
+  46   1      en=0;
+  47   1      }
+  48          
+  49          void lcd_data(unsigned char d)
+  50          {
+  51   1      dataport=d;
+  52   1      rs=1;
+  53   1      rw=0;
+  54   1      en=1;
+C51 COMPILER V9.50a   LCDSTRING                                                            10/17/2022 18:56:49 PAGE 2   
+
+  55   1      delay();
+  56   1      en=0;
+  57   1      }
+  58          
+  59          
+  60          void lcd_string(unsigned char *P)
+  61          {
+  62   1        int i;
+  63   1        for(i=0;P[i]!='\0';i++)
+  64   1        {
+  65   2          lcd_data(P[i]);
+  66   2        }
+  67   1      }
+  68          void delay (void)
+  69          {
+  70   1      int i,j;
+  71   1      for(i=0;i<100;i++)
+  72   1      {
+  73   2        for(j=0;j<500;j++)
+  74   2        {
+  75   3        }
+  76   2      }
+  77   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    150    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
