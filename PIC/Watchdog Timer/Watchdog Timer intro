@@ -1,0 +1,30 @@
+Watchdog Timer intro
+
+
+*Introduction to Watchdog Timer*
+Watchdog Timer (WDT) can be helpful to automatically reset the system whenever a timeout occurs.
+A system reset is required for preventing the failure of the system in a situation of a hardware fault or program error.
+There are countless applications where the system cannot afford to get stuck at a point (not even for a small duration of time). 
+For example, in a radar system, if the system hangs for 5 minutes, it can result in serious repercussions (an enemy plane or missile may go undetected resulting in huge losses).
+The system should be robust enough to automatically detect the failures quickly and reset itself in order to recover from the failures and function normally without errors.
+One can manually reset the system to recover from errors. But it is not always feasible to manually reset the system, especially once it has been deployed.
+To overcome such problems, a watchdog timer is necessary to automatically reset the system without human intervention.
+ 
+
+*How does Watchdog Timer work?*
+
+The watchdog timer is loaded with a timeout period which is dependent on the application.
+The watchdog timer starts its counting independent of a system clock i.e. it has a separate internal oscillator to work independently of a system clock.
+The watchdog timer cleared through software each time before the timeout period occurs.
+Whenever software failed to clear the watchdog timer before its timeout period, the watchdog timer resets the system.
+For this purpose, a watchdog timer is used to overcome software failures in real-time applications.
+The watchdog timer is also used to wake up the microcontroller from sleep mode.
+ 
+
+*Inside of PIC18F4550 Watchdog Timer*
+In PIC18F4550, the watchdog timer uses a different 31 kHz INTRC clock and it is independent of a system clock.
+Watchdog Timer can be enabled in two ways through Configuration Register (CONFIG2H) and through WDTCON Register.
+CONFIG2H has a WDTEN bit to enable/disable the watchdog timer.
+WDTCON (WDT control register) has the SWDTEN bit which is used to enable/disable the WDT through software.
+
+https://youtu.be/GbfQBsdeLw8  //link
