@@ -1,0 +1,39 @@
+PIC18F4550 I2C
+
+
+*Introduction to I2C protocol 
+I2C (Inter-Integrated Circuit) is a master-slave protocol that may have one master or many master and many slaves whereas SPI has only one master.
+It is a synchronous serial protocol that communicates data between two devices.
+It is generally used for communication over a short distance. It is a slow speed protocol as compared to SPI communication.
+The I2C device has 7-bit or 10-bit unique address. So to access these devices, the master has to address them by the 7-bit or 10-bit unique address.
+I2C is used in many applications like reading RTC (Real-time clock), accessing external EEPROM memory. It is also used in sensor modules like gyro, magnetometer, etc.
+It is also called as Two Wire Interface (TWI) protocol.
+
+*I2C bus uses 2 lines for communication:
+-Serial Clock (SCL): It is a clock signal. Data will be sent to other devices on the clock tick event. The only master device has control over this SCL line.
+-Serial Data(SDA): It is a serial data line which is used to send data in either direction.
+
+*I2C Registers
+To establish I2C communication between devices, we have to configure PIC18F4550. To do this, PIC18F4550 has different registers which are as follows
+
+1)SSPBUF: Serial Transmit/Receive Buffer
+In I2C protocol, SSPBUF is a data register which is used for transmission and reception of data.
+
+2)SSPSR: MSSP Shift Register
+It is a shift register that is used to shift data in and out on the SDA line. It is not directly accessible.
+
+3)SSPADD Register: MSSP Address Register
+In Master mode:
+SSPADD register is used to decide or generate a baud/bit rate.
+
+*I2C Clock Frequency
+Only the master initiates the clock on the SCL line.
+SSPADD register in the master is used to generate I2C clock frequency.
+
+Status Flag and Interrupt Flag
+After complete transmission of data/address, Buffer full flag is set, and also acknowledge signal is received. After reception of the acknowledge signal, the SSPIF interrupt flag is set.
+Whereas in data reception, the Buffer full flag is set when a complete byte is received and the device needs to send an Acknowledge signal for indication of reading continuation. 
+And when data is shifted from SSPSR register to SSPBUF, SSPIF flag is set.  
+So to check whether the transmission/reception is complete or not, we have to monitor either BF flag or the SSPIF interrupt flag.
+
+
