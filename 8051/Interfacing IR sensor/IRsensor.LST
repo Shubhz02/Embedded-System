@@ -1,0 +1,43 @@
+C51 COMPILER V9.50a   IRSENSOR                                                             10/12/2022 19:32:54 PAGE 1   
+
+
+C51 COMPILER V9.50a, COMPILATION OF MODULE IRSENSOR
+OBJECT MODULE PLACED IN IRsensor.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE IRsensor.c BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          sbit led=P1^1;
+   3          sbit ir2=P1^3;
+   4          sbit ir=P0^1;
+   5          
+   6          void main()
+   7          {
+   8   1      led=1;  
+   9   1      while(1)
+  10   1      {
+  11   2      if(ir==1)
+  12   2      {
+  13   3        led=1;
+  14   3      }
+  15   2      else if(ir2==1)
+  16   2      {
+  17   3        led=0;
+  18   3      }
+  19   2      }
+  20   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     16    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

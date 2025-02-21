@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"IRsensor.obj" 
+TO "IRsensor" 
+RAMSIZE(256) 
