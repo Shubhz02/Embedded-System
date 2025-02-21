@@ -1,0 +1,60 @@
+C51 COMPILER V9.50a   URT                                                                  11/01/2022 19:21:35 PAGE 1   
+
+
+C51 COMPILER V9.50a, COMPILATION OF MODULE URT
+OBJECT MODULE PLACED IN URT.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE URT.c BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          void delay(void);
+   3          void trans(unsigned char);
+   4          
+   5          void main()
+   6          {
+   7   1      TMOD=0x20;    //auto reloader
+   8   1      SCON=0x50;   //8bit+start&stop bit
+   9   1      TH1=0xFD;  //baudrate 
+  10   1      TR1=1;
+  11   1        while(1)
+  12   1      {
+  13   2      trans('A');
+  14   2      delay();
+  15   2      }
+  16   1      }
+  17          
+  18          void trans(unsigned char C)
+  19          {
+  20   1      SBUF=C;
+  21   1      while(TI==0);
+  22   1      TI=0;
+  23   1      }
+  24          
+  25          void delay(void)
+  26          {
+  27   1      int i,j;
+  28   1      for(i=0;i<500;i++)
+  29   1      {
+  30   2      for(j=0;j<500;j++)
+  31   2      {
+  32   3      
+  33   3      }
+  34   2      
+  35   2      }
+  36   1      
+  37   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     58    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

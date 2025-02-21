@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"URT.obj" 
+TO "URT" 
+RAMSIZE(256) 
