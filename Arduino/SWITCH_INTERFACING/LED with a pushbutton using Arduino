@@ -1,0 +1,35 @@
+Introduction
+This project demonstrates how to control an LED using a pushbutton with an Arduino. When the pushbutton is pressed, the LED turns on. 
+When the pushbutton is released, the LED turns off. The program reads the pushbutton's state and controls the LED based on that state.
+
+Working Principle
+The pushbutton is connected to an input pin on the Arduino, and the LED is connected to an output pin. The Arduino continuously checks the state of the pushbutton:
+
+If the button is pressed (i.e., the pushbutton state is HIGH), the LED turns on by setting the output pin to HIGH.
+If the button is not pressed (i.e., the pushbutton state is LOW), the LED turns off by setting the output pin to LOW.
+The pushbutton is used as a simple switch to control the LED based on its state.
+
+Connections
+To connect the Pushbutton and LED to your Arduino, use the following connections:
+
+Pushbutton:
+
+One leg of the pushbutton goes to Digital Pin 2 (Arduino).
+The other leg of the pushbutton is connected to GND (Arduino) (or 5V depending on your setup, but make sure to use a pull-down resistor if using 5V for stable input).
+LED:
+
+The long leg (anode) of the LED connects to Digital Pin 13 (Arduino).
+The short leg (cathode) of the LED connects to GND (Arduino).
+You can use an optional 220-ohm resistor in series with the LED to limit current.
+
+Code Explanation
+Button and LED Pins: The code defines the button pin as Pin 2 and the LED pin as Pin 13.
+Setup Function: The setup() function sets the LED pin as an output (pinMode(ledPin, OUTPUT)) and the button pin as an input (pinMode(buttonPin, INPUT)).
+Loop Function: The loop() function continuously checks the state of the pushbutton using digitalRead(buttonPin). If the pushbutton is pressed (buttonState is HIGH), 
+it turns the LED on by setting digitalWrite(ledPin, HIGH). If the pushbutton is not pressed (buttonState is LOW), the LED is turned off by setting digitalWrite(ledPin, LOW).
+
+
+Conclusion
+This simple project demonstrates how to control an LED with a pushbutton using Arduino. It introduces basic concepts of digital input and output, 
+and the code can be extended for other applications where buttons are used to control devices or actions.
+
