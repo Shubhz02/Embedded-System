@@ -1,1 +1,40 @@
-PWM_INTERFACING
+Introduction
+This project demonstrates how to use PWM (Pulse Width Modulation) to control the brightness of an LED connected to the NodeMCU (ESP8266). 
+The LED brightness is adjusted based on the value from a potentiometer (POT). As the POT is turned, the duty cycle of the PWM signal is updated, 
+changing the brightness of the LED. The NodeMCU reads the potentiometer value through an analog input pin and uses the analogWrite() function to adjust 
+the duty cycle of the PWM signal accordingly.
+
+Working Principle
+PWM works by rapidly turning the output on and off. The proportion of time the signal is "on" compared to the total period is known as the duty cycle.
+The POT (connected to an analog pin) is read continuously, and its value is used to control the LED's brightness.
+A higher POT value will result in a higher duty cycle, which makes the LED brighter.
+A lower POT value will result in a lower duty cycle, which dims the LED.
+The code uses analogWrite() to generate the PWM signal on D6 (GPIO12) pin of the NodeMCU. The duty cycle is determined by the potentiometer’s value, and it ranges from 0 to 1023.
+
+Connections
+> LED:
+Anode (longer leg) to D6 (GPIO12) on the NodeMCU.
+Cathode (shorter leg) to GND via a 220-ohm resistor.
+
+> Potentiometer:
+VCC pin to 3.3V on the NodeMCU.
+GND pin to GND on the NodeMCU.
+Wiper (middle pin) to A0 (analog input pin) on the NodeMCU.
+
+
+Code Explanation
+The code uses analogWrite() to apply a PWM signal to control the brightness of the LED.
+The initial duty cycle is set to 50% (value of 512 for a 10-bit resolution).
+
+> Main Logic:
+analogRead(A0) reads the analog value from the POT. The value is mapped from 0 to 1023.
+Duty cycle adjustment: The value from the POT is used to set the PWM duty cycle. The higher the POT value, the brighter the LED becomes.
+analogWrite(LEDpin, dutycycle): This adjusts the PWM duty cycle for the LED.
+The Serial.println(dutycycle) is used to output the current duty cycle to the Serial Monitor for debugging purposes.
+PWM Frequency: The default PWM frequency is 1kHz, which works for most applications like controlling LED brightness.
+There is no need to change the frequency unless you need higher precision or a different application.
+
+Conclusion
+This project shows how to use PWM on the NodeMCU (ESP8266) to control the brightness of an LED. The potentiometer serves as an input device to adjust the duty cycle, 
+which in turn adjusts the LED's brightness. This concept can be expanded to control the speed of motors, dim lights, or 
+even be used in more complex projects like dimming LEDs based on sensor readings.
