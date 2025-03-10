@@ -1,23 +1,27 @@
+Introduction
+  This project uses the DHT11 temperature and humidity sensor with an Arduino to read environmental data.
+The sensor provides real-time measurements of humidity and temperature, which are then displayed on the Serial Monitor. 
+The program runs continuously, reading data from the sensor every 2 seconds.
 
-DHT11 (Temperature and Humidity Sensor)
+Working Principle
+The Arduino communicates with the DHT11 sensor using a digital signal. The sensor measures the temperature and humidity in its environment and sends this data to the Arduino. 
+The code uses the DHT library to interface with the sensor and fetch readings. It then displays the readings on the Serial Monitor, 
+where you can observe the current temperature in Celsius and humidity as a percentage.
+
+Connections
+To set up the circuit, connect the DHT11 sensor to the Arduino as follows:
+VCC (DHT11) → 5V (Arduino)
+GND (DHT11) → GND (Arduino)
+DATA (DHT11) → Digital Pin 2 (Arduino)
+Ensure that you use a 10k ohm pull-up resistor between the DATA pin and VCC to maintain a stable signal.
+
+Code Explanation
+Library Import: The code includes the DHT library, which simplifies communication with the DHT sensor.
+Pin and Sensor Type: The sensor is connected to pin 2 of the Arduino, and the type of sensor is specified as DHT11.
+Setup Function: The setup() function initializes the serial communication and starts the DHT sensor.
+Loop Function: The loop() function continuously reads the temperature and humidity from the sensor. If the readings are valid, they are displayed on the Serial Monitor every 2 seconds. If the readings are invalid, an error message is displayed.
 
 
-Hardware Required:  
-> DHT11 Sensor 
-> Arduino (e.g., Arduino Uno)
-> Jumper wires
-
-
-Connections:
-             VCC to 5V
-            GND to GND
-            Data Pin to a digital pin (D2) on Arduino
-
-            
-Arduino Code:
- code to read the temperature and humidity values from the DHT11 sensor and display them.
-
-Library requirement
-//Install the DHT11 Library:
-      ............................Open Arduino IDE.   --->>Go to Sketch → Include Library → Manage Libraries.
-                                                              Search for DHT sensor library and install it.
+Conclusion
+This project demonstrates the process of connecting a DHT11 sensor to an Arduino and using the DHT library to read temperature and humidity values.
+The data is displayed in real-time on the Serial Monitor. This setup can be expanded to build more complex environmental monitoring systems.
