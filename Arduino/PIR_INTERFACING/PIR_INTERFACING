@@ -1,1 +1,33 @@
-PIR_INTERFACING
+Introduction
+This project demonstrates the use of the PIR Motion Sensor with an Arduino. The sensor detects motion and sends a digital signal to the Arduino. 
+The Arduino then processes this signal to determine whether an object is present within its range. The status is displayed on the Serial Monitor, 
+indicating whether an object is detected or not. A warm-up period is included at the start for the sensor to stabilize.
+
+Working Principle
+The PIR (Passive Infrared) Motion Sensor detects motion by measuring infrared radiation emitted by objects in its field of view.
+When an object moves in the sensor’s detection range, it produces a low to high voltage signal, which is read by the Arduino as a digital HIGH value.
+If no movement is detected, the sensor remains in the LOW state. The Arduino checks the sensor’s output and
+prints corresponding messages to the Serial Monitor to indicate the presence or absence of an object.
+
+Connections
+To connect the PIR Motion Sensor to your Arduino, use the following pin connections:
+
+VCC (PIR Sensor) → 5V (Arduino)
+GND (PIR Sensor) → GND (Arduino)
+OUT (PIR Sensor) → Digital Pin 4 (Arduino)
+Ensure that the sensor is powered and correctly connected to the Arduino for accurate motion detection.
+
+Code Explanation
+PIR Sensor Pin: The PIR sensor is connected to digital pin 4 on the Arduino, and the sensor output is read using digitalRead().
+Setup Function: The setup() function initializes the sensor pin as an input (pinMode(PIR_SENSOR_OUTPUT_PIN, INPUT)) and starts serial communication with Serial.begin(9600). 
+The delay(20000) provides a warm-up period for the sensor to stabilize after power-on.
+Loop Function: In the loop() function, the sensor's output is read using digitalRead(PIR_SENSOR_OUTPUT_PIN).
+If no motion is detected (sensor output is LOW), the program prints "No object in sight" and enters a warm-up state. When an object is detected (sensor output is HIGH), 
+the program prints "Object detected" to the Serial Monitor. The warm-up period ensures that the sensor's initial stabilization phase is handled correctly.
+
+
+Conclusion
+This project provides a simple implementation of motion detection using the PIR Motion Sensor with Arduino. 
+The sensor is capable of detecting motion within its range, and the system outputs real-time feedback on the Serial Monitor. 
+This setup can be extended for various applications such as home security systems, automatic lighting, or presence detection.
+
