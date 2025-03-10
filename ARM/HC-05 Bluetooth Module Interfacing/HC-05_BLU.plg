@@ -1,0 +1,16 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+F:\embeded class\ARM7\HC-05_BLU_ Interfacing\HC-05_BLU.uvproj
+Project File Date:  03/10/2025
+
+<h2>Output:</h2>
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling HC_05_BLU.C...
+HC_05_BLU.C(70): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=876 RO-data=16 RW-data=0 ZI-data=1256  
+"HC-05_BLU.axf" - 0 Error(s), 1 Warning(s).
