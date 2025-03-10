@@ -1,0 +1,44 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+F:\embeded class\ARM7\LCD_16x2_interfacing\LCD_16_2(8-BIT).uvproj
+Project File Date:  03/10/2025
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling Startup.s...
+compiling LCD_16_2(8 BIT).C...
+LCD_16_2(8 BIT).C(68): error:  #268: declaration may not appear after executable statement in block
+LCD_16_2(8 BIT).C(81): warning:  #1-D: last line of file ends without a newline
+Target not created
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling LCD_16_2(8 BIT).C...
+LCD_16_2(8 BIT).C(68): error:  #268: declaration may not appear after executable statement in block
+LCD_16_2(8 BIT).C(81): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Target 1'
+compiling LCD_16_2(8 BIT).C...
+LCD_16_2(8 BIT).C(68): error:  #268: declaration may not appear after executable statement in block
+LCD_16_2(8 BIT).C(81): warning:  #1-D: last line of file ends without a newline
+Target not created
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling LCD_16_2(8 BIT).C...
+LCD_16_2(8 BIT).C(68): error:  #268: declaration may not appear after executable statement in block
+LCD_16_2(8 BIT).C(81): warning:  #1-D: last line of file ends without a newline
+Target not created
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling LCD_16_2(8 BIT).C...
+LCD_16_2(8 BIT).C(68): error:  #268: declaration may not appear after executable statement in block
+LCD_16_2(8 BIT).C(81): warning:  #1-D: last line of file ends without a newline
+Target not created
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling LCD_16_2(8 BIT).C...
+LCD_16_2(8 BIT).C(68): error:  #268: declaration may not appear after executable statement in block
+LCD_16_2(8 BIT).C(81): warning:  #1-D: last line of file ends without a newline
+Target not created

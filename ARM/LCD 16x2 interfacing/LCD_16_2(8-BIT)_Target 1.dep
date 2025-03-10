@@ -1,0 +1,7 @@
+Dependencies for Project 'LCD_16_2(8-BIT)', Target 'Target 1': (DO NOT MODIFY !)
+F (.\Startup.s)(0x4F5916C8)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\Inc -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Philips --list "Startup.lst" --xref -o "Startup.o" --depend "Startup.d")
+F (.\LCD_16_2(8 BIT).C)(0x67CF5478)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\Inc -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Philips -o "lcd_16_2(8 bit).o" --omf_browse "lcd_16_2(8 bit).crf" --depend "lcd_16_2(8 bit).d")
+I (C:\Keil\ARM\Inc\Philips\lpc214x.h)(0x4F59187C)
+I (C:\Keil\ARM\RV31\Inc\stdint.h)(0x4F59167C)
+I (C:\Keil\ARM\RV31\Inc\stdlib.h)(0x4F59167C)
+I (C:\Keil\ARM\RV31\Inc\stdio.h)(0x4F59167C)
