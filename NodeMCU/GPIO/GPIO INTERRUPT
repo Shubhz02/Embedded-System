@@ -1,1 +1,44 @@
-GPIO INTERRUPT
+Introduction
+This project demonstrates how to use an interrupt with the NodeMCU (ESP8266) to trigger a function when a RISING edge is detected on a GPIO pin (in this case, D2).
+The interrupt will log the timestamp (in milliseconds) since the program started whenever the GPIO pin receives a RISING signal. This can be used for counting events,
+triggering actions based on external signals, or creating time-sensitive actions in real-time applications.
+
+Working Principle
+The NodeMCU (ESP8266) allows the use of hardware interrupts to execute specific functions when an external event occurs on one of its GPIO pins. 
+In this example, we use a RISING edge interrupt on the D2 pin (GPIO4).
+When the voltage on the D2 pin transitions from LOW to HIGH, the interrupt is triggered, and the IntCallback() function is executed.
+Inside the IntCallback() function, we use the millis() function to log the time in milliseconds since the NodeMCU started running the program.
+This timestamp can be used to track events or log the time between external triggers.
+
+
+Connections
+To set up the interrupt, you'll need to connect an external signal to D2 (GPIO4) on the NodeMCU. Here’s the basic pin configuration:
+Pin	NodeMCU Pin
+External Signal	D2 (GPIO4)
+
+D2 (GPIO4): This pin is used to detect the RISING edge. It should be connected to an external component (e.g., a push button, sensor, or external device) that will trigger the event.
+
+
+Code Explanation
+> Initialization:
+Serial.begin(9600) initializes serial communication for printing the timestamp to the Serial Monitor.
+attachInterrupt(digitalPinToInterrupt(GPIO_Pin), IntCallback, RISING) attaches an interrupt to the GPIO pin (in this case, D2 (GPIO4)). 
+The interrupt will trigger on the RISING edge of the signal and call the IntCallback() function when this occurs.
+
+> Interrupt Handling:
+The IntCallback() function is triggered whenever a RISING edge is detected on D2 (GPIO4). Inside this function, millis() returns the time in milliseconds since 
+the NodeMCU began running the program.
+This timestamp is then printed to the Serial Monitor with Serial.println(millis()).
+
+> Main Loop:
+The loop() function remains empty because the interrupt will handle the logic. The program will constantly monitor the D2 pin, and whenever a RISING edge is detected, 
+the interrupt will fire and call the IntCallback() function.
+
+
+Conclusion
+This example demonstrates how to use hardware interrupts on the NodeMCU (ESP8266) to handle external events efficiently. When a RISING edge is detected on D2 (GPIO4), 
+the program logs the current time (in milliseconds) to the Serial Monitor. This approach is useful for applications where precise event timing or response to external signals
+is required without continuously polling or checking the pin status in the loop.
+
+Applications of interrupts can range from counting external events, monitoring sensors, or triggering actions based on user input or environmental changes.
+By using interrupts, you can make your code more efficient and responsive to external signals.
