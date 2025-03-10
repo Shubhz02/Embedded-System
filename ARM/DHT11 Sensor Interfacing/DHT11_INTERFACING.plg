@@ -1,0 +1,16 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+F:\embeded class\ARM7\DHT11_Senso_Interfacing\DHT11_INTERFACING.uvproj
+Project File Date:  03/10/2025
+
+<h2>Output:</h2>
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling DHT11_INTERFACING.c...
+DHT11_INTERFACING.c(131): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=2048 RO-data=16 RW-data=0 ZI-data=1256  
+"DHT11_INTERFACING.axf" - 0 Error(s), 1 Warning(s).
