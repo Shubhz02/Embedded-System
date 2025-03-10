@@ -1,1 +1,30 @@
-LM35_INTERFACING
+Introduction
+This project uses the LM35 Temperature Sensor to measure the temperature in degrees Celsius. The analog output from the sensor is read by the Arduino and converted to a voltage,
+which is then converted into a temperature reading in Celsius. The temperature value is displayed on the Serial Monitor. The LM35 sensor outputs 10mV per degree Celsius, 
+and this code takes that into account to provide the correct temperature value.
+
+Working Principle
+The LM35 is an analog temperature sensor that outputs a voltage proportional to the temperature. For every 1°C increase in temperature, the output increases by 10mV. 
+The Arduino reads this analog voltage via one of its analog input pins. The ADC value from the sensor is then converted into a voltage, 
+and the final temperature is calculated by dividing the voltage by 10 (since the LM35 outputs 10mV per degree Celsius).
+
+Connections
+To connect the LM35 Temperature Sensor to your Arduino, use the following pin connections:
+
+VCC (LM35) → 5V (Arduino)
+GND (LM35) → GND (Arduino)
+Output (LM35) → Analog Pin A0 (Arduino)
+Ensure that your sensor is connected properly for accurate temperature readings.
+
+Code Explanation
+Sensor Pin: The LM35's output is connected to analog pin A0 on the Arduino.
+Setup Function: The setup() function initializes serial communication using Serial.begin(9600), allowing the Arduino to send data to the Serial Monitor.
+Loop Function: In the loop() function, the Arduino reads the sensor's analog value with analogRead(lm35_pin). This value is then converted to a voltage by
+multiplying the ADC value by 4.88 (since the reference voltage is 5V, and the ADC is 10 bits). Next, this voltage is divided by 10 to obtain the temperature in Celsius. 
+The temperature value is printed to the Serial Monitor every second (delay(1000)).
+
+
+Conclusion
+This project demonstrates how to interface the LM35 Temperature Sensor with an Arduino to measure and display the temperature in real-time. 
+The sensor's analog output is converted to a readable temperature value, and the result is shown on the Serial Monitor. 
+This setup can be used for various temperature monitoring applications such as environmental control systems or weather stations.
