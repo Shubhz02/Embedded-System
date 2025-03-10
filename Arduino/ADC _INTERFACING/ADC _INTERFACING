@@ -1,1 +1,44 @@
-ADC _INTERFACING
+ADC Interfacing with Arduino
+
+Introduction
+Analog-to-Digital Converters (ADC) allow microcontrollers to read analog signals and convert them into digital values.
+This guide explains how to interface an analog sensor, such as a potentiometer, with an Arduino using its built-in ADC functionality.
+
+Working Principle
+An ADC converts continuous analog voltage signals into discrete digital values. Arduino boards, like the Arduino Uno, have a 10-bit ADC,
+meaning they can represent an analog input voltage with values from 0 to 1023 The conversion follows the formula:
+
+Digital Value = (Analog Voltage / Reference Voltage) * 1023 
+
+For example, if the input voltage is 2.5V with a 5V reference, the digital value will be 511
+
+Connections
+>Components Required:
+- Arduino Uno (or compatible board)
+- Potentiometer (or any analog sensor)
+- Jumper wires
+
+Wiring:
+Sensor Pin                  Connection to Arduino 
+
+VCC                                5V                   
+GND                                GND                  
+Signal Out                     A0 (Analog Pin)      
+
+Steps to Implement
+1. Connect the Sensor:
+   - VCC to 5V on the Arduino.
+   - GND to GND on the Arduino.
+   - Analog output to A0 on the Arduino.
+
+2. Upload the Code:
+   - Open the Arduino IDE.
+   - Write and upload the ADC reading code.
+
+3. View Output:
+   - Open the Serial Monitor(9600 baud rate) to observe the changing ADC values.
+
+Conclusion
+This guide covered interfacing an analog sensor with an Arduino using the built-in ADC. 
+The analogRead() function converts an analog signal into a digital value, enabling sensor data monitoring for various applications like automation and IoT systems.
+
