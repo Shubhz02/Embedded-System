@@ -1,1 +1,48 @@
-HC-05 Bluetooth
+ Bluetooth Module Interfacing with Arduino
+
+ Introduction
+Bluetooth communication is widely used in embedded systems for wireless data transfer. The HC-05/HC-06 Bluetooth module allows Arduino to communicate with
+other Bluetooth-enabled devices like smartphones, tablets, or PCs. This guide explains how to interface the Bluetooth module with Arduino using SoftwareSerial.
+
+ Working Principle
+The HC-05/HC-06 Bluetooth module** operates on serial communication (UART protocol). It sends and receives data wirelessly using Bluetooth technology.
+The module communicates with the Arduino via TX (Transmit) and RX (Receive) pins at a predefined baud rate (typically 9600 bps).
+The SoftwareSerial library enables serial communication on other digital pins of the Arduino, freeing up the default serial port.
+
+Connections
+>Components Required:
+- Arduino Uno (or compatible board)
+- HC-05/HC-06 Bluetooth Module
+- Jumper Wires
+
+ Wiring:
+Bluetooth Module Pin               Connection to Arduino 
+VCC                                    5V                   
+GND                                    GND                  
+TX                                     Pin 2 (RX of Arduino) 
+RX                                     Pin 3 (TX of Arduino) 
+
+ Steps to Implement
+1. Connect the Bluetooth Module:
+   - Connect VCC to 5V on Arduino.
+   - Connect GND to GND on Arduino.
+   - Connect TX of Bluetooth module to Pin 2 (RX) on Arduino.
+   - Connect RX of Bluetooth module to Pin 3 (TX) on Arduino.
+
+2. Upload the Code:
+   - Use the SoftwareSerial library to communicate with the Bluetooth module.
+   - Upload the Bluetooth data transmission code via Arduino IDE.
+
+3. Pair with a Bluetooth Device:
+   - Enable Bluetooth on your smartphone or PC.
+   - Search for available Bluetooth devices and pair with HC-05 (Default PIN: 1234 )
+   - Use a serial communication app (like Bluetooth Terminal) to send and receive data.
+
+4. Monitor Data:
+   - Open the Serial Monitor in Arduino IDE.
+   - Observe incoming data from the Bluetooth module in real-time.
+
+Conclusion
+This guide explains how to interface an HC-05 Bluetooth module with Arduino using SoftwareSerial. 
+This setup enables wireless communication between the Arduino and Bluetooth-enabled devices,
+making it ideal for applications such as home automation, remote control, and wireless data logging.
