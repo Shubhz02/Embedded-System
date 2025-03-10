@@ -1,1 +1,32 @@
-ADC_USED
+Introduction
+This project demonstrates how to read the system voltage (VCC) and external voltage using the NodeMCU (ESP8266). It showcases two methods:
+
+1) Reading external voltage via the ADC pin (A0).
+2) Reading the system voltage using the built-in ESP.getVcc() function.
+Both of these techniques allow you to measure voltage on the NodeMCU, which can be helpful in many applications, including battery-powered devices, 
+power monitoring, or sensor calibration.
+
+Working Principle
+1) Reading External Voltage:
+The NodeMCU's ADC pin (A0) is used to read the voltage applied to it. The value is then printed to the Serial Monitor. 
+The analog value from the pin is read using the analogRead() function, and the value is printed on the screen.
+The voltage on A0 is measured in terms of ADC value, which is between 0 and 1023 (for a 10-bit ADC). This can be mapped to a specific voltage range.
+
+2) Reading System Voltage:
+NodeMCU (ESP8266) has an internal ADC (Analog-to-Digital Converter) that can measure the system’s VCC (voltage) directly.
+Using the function ESP.getVcc(), the system voltage is read and output to the Serial Monitor in millivolts (mV).
+The system voltage is essential for monitoring the power supply of the NodeMCU and can be helpful in applications requiring real-time power tracking or 
+ensuring consistent operation in battery-powered projects.
+
+Connections
+1) Reading External Voltage:
+You can apply any external voltage (within the allowable range for the NodeMCU's A0 pin, typically 0 to 3.3V) to the A0 pin.
+Make sure that the voltage applied does not exceed 3.3V, as this is the maximum allowed input for the NodeMCU's ADC pin to avoid damaging the board.
+
+2) Reading System Voltage:
+No external connections are required, as the system voltage is measured internally via the NodeMCU.
+
+Conclusion
+This project demonstrates how to read both external voltage through the ADC pin and system voltage directly using the NodeMCU (ESP8266).
+Understanding the system voltage can help in monitoring power levels, while the ADC readings allow for the measurement of external voltage inputs, 
+which can be useful for various sensor applications, power monitoring, and voltage-based triggering systems.
