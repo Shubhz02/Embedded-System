@@ -1,0 +1,10 @@
+LCD 16x2 interfacing with LPC2148 (8-bit mode)
+
+LCDs (Liquid Crystal Displays) are used for displaying status or parameters in embedded systems.
+LCD 16x2 is 16 pin device which has 8 data pins (D0-D7) and 3 control pins (RS, RW, EN). The remaining 5 pins are for supply and backlight for the LCD.
+The control pins help us configure the LCD in command mode or data mode. They also help configure read mode or write mode and also when to read or write.
+LCD 16x2 can be used in 4-bit mode or 8-bit mode depending on the requirement of the application. In order to use it we need to send certain commands to 
+the LCD in command mode and once the LCD is configured according to our need, we can send the required data in data mode to display on it.
+
+CD Data pins D0-D7 are connected to pins P0.8-P0.15 of Port 0.
+LCD control pins RS, RW and EN are connected to P0.4, P0.5 P0.6 respectively.
