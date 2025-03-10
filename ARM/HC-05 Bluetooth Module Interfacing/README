@@ -1,0 +1,12 @@
+HC-05 Bluetooth Module Interfacing with LPC2148
+
+HC-05 is a Bluetooth device used for wireless communication. It works on serial communication (UART).
+It is a 6-pin module.
+The device can be used in 2 modes; data mode and command mode.
+The data mode is used for data transfer between devices whereas command mode is used for changing the settings of the Bluetooth module.
+AT commands are required in command mode.
+The module works on 5V or 3.3V. It has an onboard 5V to 3.3V regulator.
+As HC-05 Bluetooth module has 3.3 V level for RX/TX and the microcontroller can detect 3.3 V level, so, no need to shift transmit level of the HC-05 module.
+But we need to shift the transmit voltage level from the microcontroller to RX of HC-05 module.
+
+Note : Default Bluetooth name of the device is “HC-05” and default PIN (password) for connection is either “0000” or “1234”.
