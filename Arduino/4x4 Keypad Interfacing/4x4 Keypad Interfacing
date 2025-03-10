@@ -1,1 +1,34 @@
-4x4 Keypad Interfacing
+4x4 Matrix Keypad with Arduino
+
+Introduction
+  A 4x4 Matrix Keypad is a commonly used input device that allows users to enter numeric, alphanumeric, or custom commands into an embedded system. 
+It consists of 16 keys arranged in a 4-row by 4-column matrix. This keypad is widely used in password-protected systems, automation, security access, and many other applications.
+
+Working Principle
+  The 4x4 matrix keypad is designed in a way that reduces the number of required I/O pins. Instead of assigning one pin per key (which would require 16 pins),
+the keys are connected in a row-column configuration. This arrangement allows us to detect key presses by scanning the matrix.
+  Each key is placed at the intersection of a row and a column. When a key is pressed, it completes a circuit between a specific row and a column.
+The microcontroller detects the pressed key by systematically applying signals to the rows and checking which column registers the signal.
+
+Steps to Detect a Key Press:
+1)Set all columns as input with pull-up resistors enabled and all rows as output.
+2)Pull each row LOW one at a time while checking the columns for a LOW signal.
+3)If a column reads LOW when a row is active, the corresponding key has been pressed.
+4)Decode the pressed key by mapping it to the appropriate row and column values.
+
+Circuit Diagram:
+>>The 4x4 keypad consists of 8 pins:
+4 Row Pins (R1, R2, R3, R4)
+4 Column Pins (C1, C2, C3, C4)
+
+Wiring with Arduino:
+
+Keypad Pin                              Arduino Pin
+R1 (Row 1)                                 10
+R2 (Row 2)                                 11
+R3 (Row 3)                                 12
+R4 (Row 4)                                 13
+C1 (Col 1)                                  6
+C2 (Col 2)                                  7
+C3 (Col 3)                                  8
+C4 (Col 4)                                  9
