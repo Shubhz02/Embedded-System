@@ -1,1 +1,52 @@
-LM35_INTERFACING
+Introduction
+In this project, the NodeMCU (ESP8266) is used to read an analog temperature sensor value. The sensor is connected to the A0 pin on the NodeMCU, 
+and the temperature is calculated and displayed on the Serial Monitor. The program reads the analog value from the sensor, converts it to the corresponding voltage, 
+and then calculates the temperature in Celsius based on the sensor's characteristics.
+
+Working Principle
+The NodeMCU (ESP8266) has a built-in ADC (Analog to Digital Converter) that converts the analog voltage from a sensor to a digital value between 0 and 1023.
+This range corresponds to a voltage between 0V and 3.3V (the reference voltage).
+
+The temperature sensor produces an analog voltage that is proportional to the temperature.
+
+The code reads this value from A0, converts it to a corresponding voltage, and then uses a simple formula to calculate the temperature
+(assuming a linear relationship between voltage and temperature).
+
+Working Steps:
+The NodeMCU reads an analog voltage from the A0 pin.
+The analog value is then converted into a real-world voltage.
+The temperature is calculated using the formula:
+
+Temperature (°C) = Analog Value ×(3.3 /1023 )× 100
+
+(This formula assumes that 1 unit of voltage corresponds to 1 degree Celsius in the sensor.)
+The temperature is printed to the Serial Monitor every second.
+
+
+Connections
+Temperature Sensor: Connect the VCC pin of the sensor to 3.3V of the NodeMCU.
+Connect the GND pin of the sensor to the GND pin of the NodeMCU.
+Connect the Analog Output pin of the sensor to the A0 pin on the NodeMCU.
+
+
+Code Explanation
+> Sensor Reading:
+The analogRead(A0) function reads the analog voltage from the sensor.
+
+> Voltage Calculation:
+float resolution = vref/1023; defines the voltage per unit of the ADC reading (for a 3.3V reference voltage).
+temperature = (temperature*resolution); converts the ADC reading into a voltage.
+
+> Temperature Calculation:
+temperature = temperature*100; converts the voltage into a temperature in Celsius (assuming a direct relationship where 1V = 1°C).
+
+> Output:
+The temperature is printed to the Serial Monitor using Serial.println(temperature); every second, showing the temperature value.
+
+
+Conclusion
+This project demonstrates how to interface an analog temperature sensor with the NodeMCU (ESP8266) and display the temperature readings on the Serial Monitor.
+This is a basic project that helps you understand how to work with analog sensors and ADC readings on the NodeMCU. You can modify the sensor or
+apply more complex formulas to handle more sophisticated temperature sensors in the future.
+
+By adjusting the formula or scaling factor, you can use this same setup with a variety of different temperature sensors.
