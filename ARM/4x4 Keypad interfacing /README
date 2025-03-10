@@ -1,0 +1,14 @@
+4x4 Keypad interfacing with LPC2148
+
+Keypad is used as an input device to read the key pressed by the user and to process it.
+4x4 keypad consists of 4 rows and 4 columns. Switches are placed between the rows and columns. 
+A key press establishes a connection between corresponding row and column between which the switch is placed.
+In order to read the key press, we need to configure the rows as outputs and columns as inputs.
+Columns are read after applying signals to the rows in order to determine whether or not a key is pressed and if pressed, which key is pressed.
+
+Rows of the keypad R3-R0 are connected to pins P0.15-P0.12 respectively.
+Columns of the keypad C3-C0 are connected to pins P0.11-P0.8 respectively.
+
+reading the key pressed from a keypad and to display the key pressed on PC terminal using UART communication.
+In this code, UART0 feature of LPC2148 has been used for displaying information regarding the key press. 
+For information about UART0 in LPC2148 and how to use it, refer the topic UART in LPC2148 in the ARM7-LPC2148 inside section
