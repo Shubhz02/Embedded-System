@@ -1,0 +1,16 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+F:\embeded class\ARM7\LED_SWITCH_INTERFACING\LED_SWITCH_interfacing.uvproj
+Project File Date:  03/10/2025
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling Startup.s...
+compiling LED_SWITCH.c...
+LED_SWITCH.c(21): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=524 RO-data=16 RW-data=0 ZI-data=1256  
+"LED_SWITCH_interfacing.axf" - 0 Error(s), 1 Warning(s).
