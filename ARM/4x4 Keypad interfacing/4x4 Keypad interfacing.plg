@@ -1,0 +1,22 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+F:\embeded class\ARM7\4x4_Keypad_interfacing\4x4 Keypad interfacing.uvproj
+Project File Date:  03/10/2025
+
+<h2>Output:</h2>
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling 4x4 Keypad interfacing.C...
+4x4 Keypad interfacing.C(69): error:  #268: declaration may not appear after executable statement in block
+4x4 Keypad interfacing.C(131): error:  #268: declaration may not appear after executable statement in block
+4x4 Keypad interfacing.C(160): warning:  #1-D: last line of file ends without a newline
+Target not created
+Build target 'Target 1'
+compiling 4x4 Keypad interfacing.C...
+4x4 Keypad interfacing.C(69): error:  #268: declaration may not appear after executable statement in block
+4x4 Keypad interfacing.C(131): error:  #268: declaration may not appear after executable statement in block
+4x4 Keypad interfacing.C(160): warning:  #1-D: last line of file ends without a newline
+Target not created

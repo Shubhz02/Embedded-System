@@ -1,0 +1,1 @@
+-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\Inc -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Philips -o "4x4 keypad interfacing.o" --omf_browse "4x4 keypad interfacing.crf" --depend "4x4 keypad interfacing.d" "4x4 Keypad interfacing.C"
