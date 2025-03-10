@@ -1,0 +1,19 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+F:\embeded class\ARM7\Servo_MotoR_Interfacing\Servo Motor Interfacing.uvproj
+Project File Date:  03/10/2025
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling Startup.s...
+compiling Servo Motor Interfacing .C...
+Servo Motor Interfacing .C(58): error:  #254: type name is not allowed
+Servo Motor Interfacing .C(58): error:  #65: expected a ";"
+Servo Motor Interfacing .C(58): error:  #20: identifier "value" is undefined
+Servo Motor Interfacing .C(64): error:  #254: type name is not allowed
+Servo Motor Interfacing .C(64): error:  #65: expected a ";"
+Servo Motor Interfacing .C(71): warning:  #1-D: last line of file ends without a newline
+Target not created
