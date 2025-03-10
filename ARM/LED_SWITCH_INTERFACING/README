@@ -1,0 +1,5 @@
+Control LED using Push Button using LPC2148
+{ turning LED ON or OFF depending on the status of the pin.}
+
+Here, LED is interfaced to P0.0.
+A switch is interfaced to P0.1 to change the status of the pin.
