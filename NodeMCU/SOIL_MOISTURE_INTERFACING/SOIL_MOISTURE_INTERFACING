@@ -1,1 +1,41 @@
-SOIL_MOISTURE_INTERFACING
+Introduction
+This project demonstrates how to use the NodeMCU (ESP8266) to read values from a soil moisture sensor and display the moisture level in percentage. 
+The soil moisture sensor provides an analog output, which is then read by the NodeMCU's A0 analog input pin. The value is converted to a percentage and printed to the serial monitor.
+
+Working Principle
+Soil Moisture Sensor: The sensor works by measuring the resistance between two probes inserted into the soil. The resistance varies with the moisture level of the soil:
+he higher the moisture, the lower the resistance.
+
+Analog Readings: The NodeMCU reads the analog value from the sensor through the A0 pin. This value ranges from 0 to 1023.
+
+Moisture Calculation: The value is mapped to a percentage of soil moisture. A higher analog value corresponds to drier soil, while a lower analog value indicates wetter soil.
+
+The formula used to calculate moisture percentage is:
+   
+      moisture_percentage = ( 100.00 - ( (analogRead(sensor_pin)/1023.00) * 100.00 ) )
+
+
+Connections
+> Soil Moisture Sensor:
+Signal (Analog Output) pin to A0 (analog input pin) on the NodeMCU.
+VCC pin to 3.3V or 5V (depending on your sensor's voltage requirement) on the NodeMCU.
+GND pin to GND on the NodeMCU.
+
+
+Code Explanation
+Analog Reading: The analogRead(sensor_pin) function reads the sensor's analog value from pin A0. This value ranges from 0 to 1023, where 0 represents maximum moisture and 1023 
+represents dry soil.
+
+Moisture Percentage Calculation: The moisture percentage is calculated by subtracting the analog value's proportion from 100. 
+A lower reading (wet soil) results in a higher moisture percentage, while a higher reading (dry soil) results in a lower percentage.
+
+moisture_percentage = ( 100.00 - ( (analogRead(sensor_pin)/1023.00) * 100.00 ) )
+
+Serial Output: The moisture level in percentage is displayed on the serial monitor, making it easy to observe the current soil moisture.
+
+Delay: A 1-second delay (delay(1000)) is added between readings to ensure the system doesn't overwhelm the serial monitor with data.
+
+Conclusion
+This project provides a simple way to monitor soil moisture using the NodeMCU (ESP8266). It can be used for applications like automated irrigation systems, 
+where the soil moisture data can help control water usage. By adjusting the threshold moisture level, you can automate watering based on the sensor's readings.
+
